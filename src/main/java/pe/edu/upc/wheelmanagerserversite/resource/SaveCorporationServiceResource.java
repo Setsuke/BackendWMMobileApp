@@ -2,6 +2,7 @@ package pe.edu.upc.wheelmanagerserversite.resource;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Lob;
@@ -21,6 +22,7 @@ public class SaveCorporationServiceResource {
 
     @NotNull
     @Lob
+    @Type(type = "text")
     private String description;
 
 
@@ -29,5 +31,6 @@ public class SaveCorporationServiceResource {
 
     @NotNull
     @Lob
+    @Type(type = "text")
     private String picture;
 }

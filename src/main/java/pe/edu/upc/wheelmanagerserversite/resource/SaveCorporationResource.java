@@ -19,7 +19,7 @@ public class SaveCorporationResource {
     private String name;
 
     @NotNull
-    @Size(max = 30)
+    @Size(max = 50)
     @Column(unique = true)
     private String address;
 

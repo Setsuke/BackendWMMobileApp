@@ -1,6 +1,7 @@
 package pe.edu.upc.wheelmanagerserversite.resource;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Lob;
@@ -23,6 +24,7 @@ public class SaveProductResource {
     private String name;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "description", nullable = false)
     private String description;
 
@@ -32,6 +34,7 @@ public class SaveProductResource {
     private  Double price;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "picture", nullable = false)
     private String picture;
 }

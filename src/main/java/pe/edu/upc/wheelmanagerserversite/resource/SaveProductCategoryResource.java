@@ -2,6 +2,8 @@ package pe.edu.upc.wheelmanagerserversite.resource;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
+
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.Column;
@@ -18,6 +20,7 @@ public class SaveProductCategoryResource {
     private String name;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "picture", nullable = false)
     private String picture;
 }

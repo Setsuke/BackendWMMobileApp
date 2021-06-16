@@ -3,6 +3,8 @@ package pe.edu.upc.wheelmanagerserversite.domain.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
+
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
@@ -24,6 +26,7 @@ public class ProductCategory extends AuditModel {
     private String name;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "picture", nullable = false)
     private String picture;
 }

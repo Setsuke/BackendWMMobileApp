@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -29,6 +30,7 @@ public class CorporationService extends AuditModel {
     private String name;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "description", nullable = false)
     private String description;
 
@@ -36,6 +38,7 @@ public class CorporationService extends AuditModel {
     private  Double price;
 
     @Lob
+    @Type(type = "text")
     @Column(name = "picture", nullable = false)
     private String picture;
 

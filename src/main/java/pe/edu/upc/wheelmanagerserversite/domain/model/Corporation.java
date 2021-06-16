@@ -27,7 +27,7 @@ public class Corporation extends AuditModel {
     private String name;
 
     @NotNull
-    @Size(max = 30)
+    @Size(max = 50)
     @Column(unique = true)
     private String address;
 
