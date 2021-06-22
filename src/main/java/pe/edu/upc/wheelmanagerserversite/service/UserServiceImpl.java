@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
         UserProfile userProfile = userProfileRepository.findById(userProfileId).orElse(new UserProfile());
         user.setCorporation(corporation);
         user.setUserProfile(userProfile);
-        return user;
+        return userRepository.save(user);
 
         /*return corporationRepository.findById(corporationId).map(corporation -> {
             user.setCorporation(corporation);
