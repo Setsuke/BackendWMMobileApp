@@ -26,14 +26,11 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User createUser(Long corporationId, Long userProfileId,User user) {
-        return corporationRepository.findById(corporationId).map(corporation -> {
-            user.setCorporation(corporation);
+    public User createUser(Long userProfileId,User user) {
             return userProfileRepository.findById(userProfileId).map(userProfile -> {
                 user.setUserProfile(userProfile);
                 return userRepository.save(user);
             }).orElseThrow(()->new ResourceNotFoundException("UserProfile","Id",userProfileId));
-        }).orElseThrow(()->new ResourceNotFoundException("Corporation","Id",corporationId));
     }
 
     @Override
