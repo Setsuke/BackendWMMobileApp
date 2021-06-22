@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public UserResource createUser(@RequestParam(required = false) Long corporationId,
+    public UserResource createUser(@RequestParam(required = false, name="corporationId") Long corporationId,
                                    @RequestParam(name="userProfileId") Long userProfileId,
             @Valid @RequestBody SaveUserResource resource) {
         User user = convertToEntity(resource);
