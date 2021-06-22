@@ -7,7 +7,7 @@ import pe.edu.upc.wheelmanagerserversite.domain.model.User;
 
 
 public interface UserService {
-    User createUser(Long userProfileId, User user);
+    User createUser(Long corporationId, Long userProfileId, User user);
     User updateUser(Long userId, User userRequest);
     ResponseEntity<?> deleteUser(Long userId);
     Page<User> getAllUsers(Pageable pageable);

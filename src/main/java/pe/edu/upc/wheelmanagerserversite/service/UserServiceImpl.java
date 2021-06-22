@@ -5,12 +5,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.wheelmanagerserversite.domain.model.Corporation;
 import pe.edu.upc.wheelmanagerserversite.domain.model.User;
+import pe.edu.upc.wheelmanagerserversite.domain.model.UserProfile;
 import pe.edu.upc.wheelmanagerserversite.domain.repository.CorporationRepository;
 import pe.edu.upc.wheelmanagerserversite.domain.repository.UserProfileRepository;
 import pe.edu.upc.wheelmanagerserversite.domain.repository.UserRepository;
 import pe.edu.upc.wheelmanagerserversite.domain.service.UserService;
 import pe.edu.upc.wheelmanagerserversite.exception.ResourceNotFoundException;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,11 +30,20 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User createUser(Long userProfileId,User user) {
+    public User createUser(Long corporationId, Long userProfileId,User user) {
+        Corporation corporation = corporationRepository.findById(corporationId).orElse(new Corporation());
+        UserProfile userProfile = userProfileRepository.findById(userProfileId).orElse(new UserProfile());
+        user.setCorporation(corporation);
+        user.setUserProfile(userProfile);
+        return user;
+
+        /*return corporationRepository.findById(corporationId).map(corporation -> {
+            user.setCorporation(corporation);
             return userProfileRepository.findById(userProfileId).map(userProfile -> {
                 user.setUserProfile(userProfile);
                 return userRepository.save(user);
             }).orElseThrow(()->new ResourceNotFoundException("UserProfile","Id",userProfileId));
+        }).orElseThrow(()->new ResourceNotFoundException("Corporation","Id",corporationId));*/
     }
 
     @Override
