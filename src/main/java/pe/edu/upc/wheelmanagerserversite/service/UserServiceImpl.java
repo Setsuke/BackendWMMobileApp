@@ -31,8 +31,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(Long corporationId, Long userProfileId,User user) {
-        Corporation corporation = corporationRepository.findById(corporationId).orElse(new Corporation());
-        UserProfile userProfile = userProfileRepository.findById(userProfileId).orElse(new UserProfile());
+        Corporation corporation = null;
+        UserProfile userProfile = null;
+        try {
+            corporation = corporationRepository.findById(corporationId).orElse(new Corporation());
+            userProfile = userProfileRepository.findById(userProfileId).orElse(new UserProfile());
+        }catch (IllegalArgumentException ae){
+            System.out.println("Exception:" + ae.getMessage());
+        }
         user.setCorporation(corporation);
         user.setUserProfile(userProfile);
         return userRepository.save(user);
