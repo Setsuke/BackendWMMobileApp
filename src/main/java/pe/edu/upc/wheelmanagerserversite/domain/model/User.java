@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.lang.Nullable;
+
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
@@ -42,7 +44,7 @@ public class User extends AuditModel {
     private UserProfile userProfile;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(columnDefinition="integer", name = "corporation_id")
+    @JoinColumn(name = "corporation_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Corporation corporation;
 
