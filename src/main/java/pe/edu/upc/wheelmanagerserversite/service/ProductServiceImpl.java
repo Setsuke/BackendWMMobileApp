@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
     public Product updateProduct(Long productId, Product productRequest){
         return productRepository.findById(productId).map(product -> {
             product.setRating(productRequest.getRating());
-            product.setUnits_int_stock(productRequest.getUnits_int_stock());
+            product.setUnits_in_stock(productRequest.getUnits_in_stock());
             product.setName(productRequest.getName());
             product.setDescription(productRequest.getDescription());
             product.setPrice(productRequest.getPrice());

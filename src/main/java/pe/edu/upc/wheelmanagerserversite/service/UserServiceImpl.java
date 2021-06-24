@@ -31,25 +31,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(Long corporationId, Long userProfileId,User user) {
-        Corporation corporation = null;
-        UserProfile userProfile = userProfileRepository.findById(userProfileId).orElse(new UserProfile());
-        try {
-            corporation = corporationRepository.findById(corporationId).orElse(new Corporation());
-
-        }catch (Exception ae){
-            System.out.println("Exception:" + ae.getMessage());
-        }
-        user.setCorporation(corporation);
-        user.setUserProfile(userProfile);
-        return userRepository.save(user);
-
-        /*return corporationRepository.findById(corporationId).map(corporation -> {
-            user.setCorporation(corporation);
+        if(corporationId == null){
             return userProfileRepository.findById(userProfileId).map(userProfile -> {
                 user.setUserProfile(userProfile);
                 return userRepository.save(user);
             }).orElseThrow(()->new ResourceNotFoundException("UserProfile","Id",userProfileId));
-        }).orElseThrow(()->new ResourceNotFoundException("Corporation","Id",corporationId));*/
+        }else{
+            return corporationRepository.findById(corporationId).map(corporation -> {
+                user.setCorporation(corporation);
+                return userProfileRepository.findById(userProfileId).map(userProfile -> {
+                    user.setUserProfile(userProfile);
+                    return userRepository.save(user);
+                }).orElseThrow(()->new ResourceNotFoundException("UserProfile","Id",userProfileId));
+            }).orElseThrow(()->new ResourceNotFoundException("Corporation","Id",corporationId));
+        }
     }
 
     @Override

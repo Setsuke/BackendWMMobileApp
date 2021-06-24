@@ -25,7 +25,7 @@ public class Product extends AuditModel {
     private int rating;
 
     @Column(unique = true)
-    private int units_int_stock;
+    private int units_in_stock;
 
     @NotNull
     @Size(max = 25)

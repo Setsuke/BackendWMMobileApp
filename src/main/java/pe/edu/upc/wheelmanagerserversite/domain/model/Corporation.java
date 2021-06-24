@@ -36,7 +36,4 @@ public class Corporation extends AuditModel {
     @Size(max = 20)
     @Column(unique = true)
     private String phone;
-
-    @OneToMany(mappedBy="corporation", cascade=CascadeType.ALL, orphanRemoval=true)
-    private Set<User> users;
 }

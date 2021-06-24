@@ -12,7 +12,7 @@ import pe.edu.upc.wheelmanagerserversite.domain.model.ProductCategory;
 public class ProductResource extends AuditModel {
     private Long id;
     private int rating;
-    private int units_int_stock;
+    private int units_in_stock;
     private String name;
     private String description;
     private  Double price;
