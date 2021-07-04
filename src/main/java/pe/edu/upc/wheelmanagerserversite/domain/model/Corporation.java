@@ -29,11 +29,9 @@ public class Corporation extends AuditModel {
 
     @NotNull
     @Size(max = 50)
-    @Column(unique = true)
     private String address;
 
     @NotNull
     @Size(max = 20)
-    @Column(unique = true)
     private String phone;
 }

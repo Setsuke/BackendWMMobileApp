@@ -21,7 +21,7 @@ public class Product extends AuditModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Size(max = 20)
     private int rating;
 
     @Column(unique = true)
@@ -39,7 +39,6 @@ public class Product extends AuditModel {
 
     @NotNull
     @Size(max = 20)
-    @Column(unique = true)
     private  Double price;
 
     @Lob

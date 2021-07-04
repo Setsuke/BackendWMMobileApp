@@ -21,12 +21,11 @@ public class CorporationService extends AuditModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Size(max = 20)
     private int rating;
 
     @NotNull
     @Size(max = 50)
-    @Column(unique = true)
     private String name;
 
     @Lob
@@ -35,6 +34,7 @@ public class CorporationService extends AuditModel {
     private String description;
 
     @NotNull
+    @Size(max = 20)
     private  Double price;
 
     @Lob

@@ -12,12 +12,12 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class SaveCorporationServiceResource {
-    @Column(unique = true)
+
+    @Size(max = 20)
     private int rating;
 
     @NotNull
     @Size(max = 50)
-    @Column(unique = true)
     private String name;
 
     @NotNull

@@ -12,10 +12,9 @@ import javax.validation.constraints.Size;
 @Setter
 public class SaveProductResource {
 
-    @Column(unique = true)
+    @Size(max = 20)
     private int rating;
 
-    @Column(unique = true)
     private int units_in_stock;
 
     @NotNull
@@ -30,7 +29,6 @@ public class SaveProductResource {
 
     @NotNull
     @Size(max = 20)
-    @Column(unique = true)
     private  Double price;
 
     @Lob
